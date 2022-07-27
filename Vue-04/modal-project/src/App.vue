@@ -1,29 +1,31 @@
 <template>
-  <h1>{{ title }}</h1>
-  <!--
-  <input type="text" ref="name">
-  <button @click="handleClick">Click Me</button>
-  -->
-  <teleport to=".modals" v-if="showModal">
-    <Modal theme='sales' @close="toggleModal">
-      <template v-slot:links>
-        <a href="#">Sign up now</a>
+  <div>  
+    <h1>{{ title }}</h1>
+    <!--
+    <input type="text" ref="name">
+    <button @click="handleClick">Click Me</button>
+    -->
+    <teleport to=".modals" v-if="showModal">
+      <Modal theme='sales' @close="toggleModal">
+        <template v-slot:links>
+          <a href="#">Sign up now</a>
+          <a href="#">More info</a>
+        </template>
+        <h1>{{header}}</h1>
+        <p>{{text}}</p>
+      </Modal>
+    </teleport>
+
+    <div v-if="showModalTwo">
+      <Modal @close="toggleModalTwo">
+        <h1 href="#">Sign up for free newsletter</h1>
         <a href="#">More info</a>
-      </template>
-      <h1>{{header}}</h1>
-      <p>{{text}}</p>
-    </Modal>
-  </teleport>
+      </Modal>
+    </div>
 
-  <div v-if="showModalTwo">
-    <Modal @close="toggleModalTwo">
-      <h1 href="#">Sign up for free newsletter</h1>
-      <a href="#">More info</a>
-    </Modal>
+    <button @click="toggleModal">Open Modal</button>
+    <button @click="toggleModalTwo">Open Modal 2</button>
   </div>
-
-  <button @click="toggleModal">Open Modal</button>
-  <button @click="toggleModalTwo">Open Modal 2</button>
 </template>
 
 <script>
